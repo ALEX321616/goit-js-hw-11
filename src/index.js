@@ -1,6 +1,6 @@
 import './sass/main.scss';
 import Notiflix from 'notiflix';
-import SimpleLightbox from 'Simplelightbox';
+import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import LoadMoreBtn from './js/load-more-btn';
