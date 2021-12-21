@@ -48,12 +48,13 @@ function onSearch(e) {
 }
 
 function fetchArticles() {
-  loadMoreBtn.enable();
+  loadMoreBtn.disable();
   apiService
     .fetchArticles()
 
     .then(hits => {
       appendImgMarkup(hits);
+      loadMoreBtn.enable();
       if (apiService.endPage) {
         loadMoreBtn.hide();
       }
