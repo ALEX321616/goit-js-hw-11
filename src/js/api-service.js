@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-
+import axios from 'axios';
 const options = {
   headers: {
     API_KEY: '24727962-734988bb0b03b5b4e85a70964',
@@ -19,12 +19,13 @@ export default class ApiService {
     this.orientation = 'horizontal';
   }
 
-  fetchArticles() {
+  async fetchArticles() {
     const URL = `${options.headers.BASE_URL}?key=${options.headers.API_KEY}&q=${this.searchText}&image_type=${this.imageType}&page=${this.pageURL}&per_page=${this.perPage}&orientation=${this.orientation}&safesearch=${this.safeSearch}`;
 
-    return fetch(URL)
+    return await axios
+      .get(URL)
       .then(response => {
-        return response.json();
+        return response.data;
       })
       .then(({ hits, totalHits }) => {
         if (totalHits === 0) {
@@ -58,9 +59,7 @@ export default class ApiService {
     this.pageURL = 1;
     this.endPage = false;
   }
-  quantityCheck() {
-    alert();
-  }
+
   get textQuery() {
     return this.searchText;
   }

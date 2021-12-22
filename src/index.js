@@ -51,7 +51,6 @@ function fetchArticles() {
   loadMoreBtn.disable();
   apiService
     .fetchArticles()
-
     .then(hits => {
       appendImgMarkup(hits);
       loadMoreBtn.enable();
